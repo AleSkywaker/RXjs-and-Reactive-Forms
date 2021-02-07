@@ -1,10 +1,22 @@
 <nav class="navbar navbar-dark bg-dark justify-content-between">
   <div class="container">
     <a class="navbar-brand">Peliculas</a>
-    <form class="form-inline" (ngSubmit)="buscar(miFormulario)" #miFormulario="ngForm">
-      <input class="form-control mr-sm-2" type="search" placeholder="Que ver......." aria-label="Search" name="pelicula"
-        [(ngModel)]="datosBusqueda.pelicula">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar pelicula</button>
+    <form
+    #miFormulario="ngForm"
+    class="form-inline"
+    (ngSubmit)="buscar(miFormulario)"
+    >
+      <input
+      autocomplete="off"
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Que ver......."
+      aria-label="Search"
+      name="pelicula"
+      [(ngModel)]="datosBusqueda.pelicula"
+      >
+      <button
+      class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar pelicula</button>
     </form>
 
   </div>

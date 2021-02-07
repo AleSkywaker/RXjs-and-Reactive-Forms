@@ -5,3 +5,8 @@ export interface Movie {
   Type: String;
   Poster: String;
 }
+
+export interface Busqueda {
+  pelicula: String;
+  pagina: Number;
+}

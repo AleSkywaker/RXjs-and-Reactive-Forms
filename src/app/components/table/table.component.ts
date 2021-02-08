@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { MoviesService } from '../../shared/services/movies.service';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MoviesStoreService } from '../../shared/services/movies-store.service';
 
 @Component({
   selector: 'app-table',
@@ -11,12 +10,9 @@ import { MatTableDataSource } from '@angular/material/table';
 export class TableComponent {
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns: string[] = ['Title', 'Year', 'imdbID', 'Type', 'Poster'];
-  dataSource;
-  constructor(private movieService: MoviesService) {
-    this.movieService.getMovies('Batman', 1).subscribe((d) => {
-      console.log(d);
-      this.dataSource = new MatTableDataSource(d);
-      this.dataSource.sort = this.sort;
-    });
+  constructor(public movieStore: MoviesStoreService) {  }
+
+  ver(id:string){
+    console.log("id", id)
   }
 }

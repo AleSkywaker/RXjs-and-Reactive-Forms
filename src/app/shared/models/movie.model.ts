@@ -8,5 +8,5 @@ export interface Movie {
 
 export interface Busqueda {
   pelicula: String;
-  pagina: Number;
+  pagina: number;
 }

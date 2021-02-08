@@ -16,6 +16,16 @@ th.mat-sort-header-sorted {
 
 .mat-row {
   height: auto;
+  cursor: pointer;
+}
+.mat-row:hover {
+  height: auto;
+  cursor: pointer;
+  background-color: crimson;
+}
+.mat-row:hover >td{
+  color:white !important;
+  font-weight: bolder;
 }
 
 .mat-cell {

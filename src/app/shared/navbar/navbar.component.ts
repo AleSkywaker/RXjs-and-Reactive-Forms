@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Busqueda } from '../models/movie.model';
-import { MoviesService } from '../services/movies.service';
+import { Busqueda } from '@models/movie.model';
+import { MoviesStoreService } from '@services//movies-store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,16 +13,11 @@ export class NavbarComponent implements OnInit {
     pelicula: '',
     pagina: 1,
   };
-  constructor(private movieService: MoviesService) {}
+  constructor(public movieStore: MoviesStoreService) {}
 
   ngOnInit(): void {}
   buscar(form: NgForm) {
-    console.log('busqueda', form.value);
-    this.movieService
-      .getMovies(form.value.pelicula, 1)
-      .subscribe((peliculas) => {
-        console.log(peliculas);
-      });
+    this.movieStore.searchByTitle(form.value.pelicula, this.datosBusqueda.pagina).subscribe()
     form.reset();
   }
 }

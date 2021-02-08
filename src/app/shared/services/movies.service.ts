@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie.model';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,8 +11,9 @@ export class MoviesService {
   constructor(private http: HttpClient) {}
 
   getMovies(peli: string, page: number): Observable<Movie[]> {
-    return this.http
-      .get<Movie[]>(`${this.url}${peli}&page=${page}`)
-      .pipe(map((d) => d['Search']));
+    return this.http.get<Movie[]>(`${this.url}${peli}&page=${page}`).pipe(
+      map((d) => d['Search']),
+      shareReplay()
+    );
   }
 }
